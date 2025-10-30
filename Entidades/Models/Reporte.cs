@@ -1,23 +1,34 @@
-﻿namespace Entidades.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entidades.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Reporte
     {
-        public int IdReporte { get; set; }
-        public string TipoReporte { get; set; }
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
-        public string? Datos { get; set; }
+        [Key]
+        public int IdReporte { get; set; } // (NOT NULL, PK)
 
-        // Relaciones
-        public int IdUsuario { get; set; }
+        [Required]
+        public string TipoReporte { get; set; } // (NOT NULL)
+
+        [Required]
+        public DateTime FechaInicio { get; set; } // (NOT NULL)
+
+        [Required]
+        public DateTime FechaFin { get; set; } // (NOT NULL)
+
+        public string? Datos { get; set; } // (NULL)
+
+        [Required]
+        public int IdUsuario { get; set; } // (NOT NULL, FK)
         public virtual Usuario Usuario { get; set; }
 
-        public int IdEstado { get; set; }
+        [Required]
+        public int IdEstado { get; set; } // (NOT NULL, FK)
         public virtual Estado Estado { get; set; }
 
-
         public Reporte() { }
-
 
         public Reporte(string tipoReporte, DateTime fechaInicio, DateTime fechaFin, int idUsuario, int idEstado)
         {
@@ -29,4 +40,3 @@
         }
     }
 }
-

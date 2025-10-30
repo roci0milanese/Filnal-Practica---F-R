@@ -1,13 +1,25 @@
-﻿namespace Entidades.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entidades.Models
 {
     public class Proveedor
     {
-        public int IdProveedor { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string? Telefono { get; set; }
-        public string Correo { get; set; }
-        public string? ProductosSuministrados { get; set; }
+        [Key]
+        public int IdProveedor { get; set; } // (NOT NULL, PK)
+
+        [Required]
+        public string Nombre { get; set; } // (NOT NULL)
+
+        [Required]
+        public string Apellido { get; set; } // (NOT NULL)
+
+        public string? Telefono { get; set; } // (NULL)
+
+        [Required]
+        [EmailAddress] // validar el formato del correo.
+        public string Correo { get; set; } // (NOT NULL, UNIQUE)
+
+        public string? ProductosSuministrados { get; set; } // (NULL)
 
         // Relaciones
         public virtual ICollection<ProductoProveedor> ProductosProveedor { get; set; }

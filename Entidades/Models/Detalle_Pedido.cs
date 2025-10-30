@@ -5,30 +5,35 @@ namespace Entidades.Models
 {
     public class DetallePedido
     {
-
         [Key]
         public int IdPedidoDetalle { get; set; }
 
-        // Id del producto al que pertenece (clave foránea)
+        [Required]
         public int IdProducto { get; set; }
 
-        // Id del pedido al que pertenece (clave foránea)
+        [Required]
         public int IdPedido { get; set; }
+
+        [Required]
         public int Cantidad { get; set; }
+
+        [Required]
         public double PrecioUnitario { get; set; }
+
+        [Required]
         public double Subtotal { get; set; }
 
         // Relaciones
-        [ForeignKey("IdProducto")]
-        public virtual Producto Producto { get; set; }
+        [Required]
+        public virtual Producto Producto { get; set; } = null!;
 
-        [ForeignKey("IdPedido")]
-        public virtual Pedido Pedido { get; set; }
+        [Required]
+        public virtual Pedido Pedido { get; set; } = null!;
 
         public DetallePedido() { }
 
-
         public DetallePedido(int idProducto, int idPedido, int cantidad, double precioUnitario, double subtotal)
+            : this()
         {
             IdProducto = idProducto;
             IdPedido = idPedido;
@@ -38,5 +43,3 @@ namespace Entidades.Models
         }
     }
 }
-
-

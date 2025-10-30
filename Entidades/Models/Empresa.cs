@@ -6,32 +6,46 @@ namespace Entidades.Models
 
     public class Medios_De_Contacto
     {
-        public string Medio { get; set; }
-        public string Valor { get; set; }
+        [Required]
+        public string Medio { get; set; } = null!;
 
-        // Clave foránea 
+        [Required]
+        public string Valor { get; set; } = null!;
+
+        // Clave foránea
+        [Required]
         public int EmpresaId { get; set; }
 
         // Relación: cada medio pertenece a una sola empresa
-        public Empresa Empresa { get; set; }
+        [Required]
+        public virtual Empresa Empresa { get; set; } = null!;
     }
-
-
 
     public class Empresa
     {
-        // (clave primaria)
-        [Key] public int IdEmpresa { get; set; }
-        public string NombreComercial { get; set; }
+       
+        [Key]
+        public int IdEmpresa { get; set; }
 
-        // Logo de la empresa (puede ser una ruta o URL de la imagen)
-        public string Logo { get; set; }
-        public string Colores { get; set; }
-        public string Tipografia { get; set; }
+        [Required]
+        public string NombreComercial { get; set; } = null!;
+
+        [Required]
+        public string Logo { get; set; } = null!;
+
+        [Required]
+        public string Colores { get; set; } = null!;
+
+        [Required]
+        public string Tipografia { get; set; } = null!;
+
+        [Required]
         public int Cuit { get; set; }
-        public string Direccion { get; set; }
-        public List<Medios_De_Contacto> MediosContacto { get; set; } = new();
 
+        [Required]
+        public string Direccion { get; set; } = null!;
+
+        public List<Medios_De_Contacto> MediosContacto { get; set; } = new();
 
         public Empresa(string nombreComercial, string logo, string colores, string tipografia, int cuit, string direccion)
         {

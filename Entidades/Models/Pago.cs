@@ -1,21 +1,38 @@
-﻿namespace Entidades.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entidades.Models
 {
     public class Pago
     {
-
+        [Key]
         public int IdPago { get; set; }
+
+        [Required]
         public double Monto { get; set; }
-        public string MetodoPago { get; set; }
+
+        [Required]
+        public string MetodoPago { get; set; } = null!;
+
+        [Required]
         public DateTime FechaPago { get; set; }
 
+        [Required]
         public int IdEstado { get; set; }
+
+        [Required]
         public int IdPedido { get; set; }
+
+        [Required]
         public int IdFactura { get; set; }
 
         // Relaciones
-        public virtual Estado Estado { get; set; }
-        public virtual Pedido Pedido { get; set; }
-        public virtual Factura Factura { get; set; }
+        [Required]
+        public virtual Estado Estado { get; set; } = null!;
+
+        [Required]
+        public virtual Pedido Pedido { get; set; } = null!;
+
+        public virtual Factura? Factura { get; set; }
 
         public Pago()
         {
@@ -32,4 +49,3 @@
         }
     }
 }
-

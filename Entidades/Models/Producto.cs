@@ -15,7 +15,9 @@ namespace Entidades.Models
         public string? Tallas { get; set; }
         public string? Colores { get; set; }
         public string? Imagen { get; set; }
+        [Required]
         public decimal Precio { get; set; }
+        [Required]
         public int Stock { get; set; }
 
         // Claves foráneas

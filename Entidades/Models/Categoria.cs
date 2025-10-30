@@ -1,28 +1,35 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entidades.Models
 {
     public class Categoria
     {
-        [Key] public int IdCategoria { get; set; }
-        public string Nombre { get; set; }
-        public List<string>? Subcategorias { get; set; }  // Lista de subcategorías (por ejemplo: "Remeras", "Pantalones")
-        public int? IdCategoriaPadre { get; set; } // Guarda el id de la categoría padre 
-        // ? significa que puede ser null
-        public List<Producto> Productos { get; set; } // Relación con los productos (una categoría puede tener varios productos)
+        [Key]
+        public int IdCategoria { get; set; }
+
+        [Required]
+        public string Nombre { get; set; } = null!;
+
+        // Colección de subcategorías 
+        public virtual ICollection<string> Subcategorias { get; set; }
+
+        public int? IdCategoriaPadre { get; set; } // Guarda el id de la categoría padre
+
+        // Relación con productos
+        public virtual ICollection<Producto> Productos { get; set; }
 
         public Categoria(string nombre)
         {
             Nombre = nombre;
-            Productos = new List<Producto>();
-            Subcategorias = new List<string>();
+            Productos = new HashSet<Producto>();
+            Subcategorias = new HashSet<string>();
         }
 
         public Categoria()
         {
-            Productos = new List<Producto>();
-            Subcategorias = new List<string>();
+            Productos = new HashSet<Producto>();
+            Subcategorias = new HashSet<string>(); //hashset No admite duplicados , ideal para colecciones.
         }
     }
 }
-

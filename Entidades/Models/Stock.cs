@@ -1,24 +1,32 @@
 ﻿namespace Entidades.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Stock
     {
-        public int IdStock { get; set; }
-        public int CantidadDisponible { get; set; }
-        public DateTime FechaActualizacion { get; set; }
+        [Key]
+        public int IdStock { get; set; } // (NOT NULL, PK)
 
-        // Relaciones
-        public int? IdProveedor { get; set; }       // Puede ser NULL
+        [Required]
+        public int CantidadDisponible { get; set; } // (NOT NULL)
+
+        [Required]
+        public DateTime FechaActualizacion { get; set; } // (NOT NULL)
+
+        public int? IdProveedor { get; set; } // (NULL)
         public virtual Proveedor? Proveedor { get; set; }
 
-        public int IdProducto { get; set; }
+        [Required]
+        public int IdProducto { get; set; } // (NOT NULL, FK)
         public virtual Producto Producto { get; set; }
 
-        public int IdSucursal { get; set; }
+        [Required]
+        public int IdSucursal { get; set; } // (NOT NULL, FK)
         public virtual Sucursal Sucursal { get; set; }
 
-        public int IdEstado { get; set; }
+        [Required]
+        public int IdEstado { get; set; } // (NOT NULL, FK)
         public virtual Estado Estado { get; set; }
-
 
         public Stock() { }
 
@@ -31,8 +39,5 @@
             IdEstado = idEstado;
             IdProveedor = idProveedor;
         }
-
-
     }
 }
-

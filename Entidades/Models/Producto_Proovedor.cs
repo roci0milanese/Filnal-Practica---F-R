@@ -1,15 +1,28 @@
-﻿namespace Entidades.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Entidades.Models
 {
+
     public class ProductoProveedor
     {
-        public int IdProducto { get; set; }
-        public int IdProveedor { get; set; }
-        public double Precio { get; set; }
-        public DateTime FechaAlta { get; set; }
+        [Key]
+        [Required]
+        public int IdProducto { get; set; } // (NOT NULL, PK, FK)
+
+        [Key]
+        [Required]
+        public int IdProveedor { get; set; } // (NOT NULL, PK, FK)
+
+        [Required]
+        public double Precio { get; set; } // (NOT NULL)
+
+        [Required]
+        public DateTime FechaAlta { get; set; } // (NOT NULL)
 
         // Relaciones
-        public Producto Producto { get; set; }
-        public Proveedor Proveedor { get; set; }
+        public virtual Producto Producto { get; set; }
+        public virtual Proveedor Proveedor { get; set; }
 
         public ProductoProveedor() { }
 

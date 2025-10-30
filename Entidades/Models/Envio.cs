@@ -1,30 +1,51 @@
-﻿namespace Entidades.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entidades.Models
 {
     public class Envio
     {
+        [Key]
         public int IdEnvio { get; set; }
-        public string TipoEnvio { get; set; }
+
+        [Required]
+        public string TipoEnvio { get; set; } = null!;
+
+        [Required]
         public double Costo { get; set; }
+
+        [Required]
         public DateTime FechaEstimada { get; set; }
-        public string NumeroSeguimiento { get; set; }
+
+        [Required]
+        public string NumeroSeguimiento { get; set; } = null!;
 
         // Claves foráneas
+        [Required]
         public int IdEstado { get; set; }
-        public Estado Estado { get; set; }
 
+        [Required]
+        public virtual Estado Estado { get; set; } = null!;
+
+        [Required]
         public int IdPedido { get; set; }
-        public Pedido Pedido { get; set; }
+
+        [Required]
+        public virtual Pedido Pedido { get; set; } = null!;
 
         // Constructor
         public Envio()
         {
-            Estado = new Estado();
-            Pedido = new Pedido();
         }
 
-        public double CalcularCosto()
+        public Envio(string tipoEnvio, double costo, DateTime fechaEstimada, int idEstado, int idPedido, string numeroSeguimiento)
+            : this()
         {
-            return Costo;
+            TipoEnvio = tipoEnvio;
+            Costo = costo;
+            FechaEstimada = fechaEstimada;
+            IdEstado = idEstado;
+            IdPedido = idPedido;
+            NumeroSeguimiento = numeroSeguimiento;
         }
     }
 }

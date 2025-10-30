@@ -1,20 +1,34 @@
-﻿namespace Entidades.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entidades.Models
 {
+
     public class Factura
     {
-
+        [Key]
         public int IdFactura { get; set; }
+
+        [Required]
         public DateTime Fecha { get; set; }
-        public string Tipo { get; set; }
+
+        [Required]
+        public string Tipo { get; set; } = null!;
+
+        [Required]
         public int Numero { get; set; }
+
+        [Required]
         public decimal Total { get; set; }
-        public string FormaPago { get; set; }
 
-        // Clave foránea
+        [Required]
+        public string FormaPago { get; set; } = null!;
+
+        [Required]
         public int IdPedido { get; set; }
-        public virtual Pedido Pedido { get; set; }
 
-        // Relación con detalles
+        [Required]
+        public virtual Pedido Pedido { get; set; } = null!;
+
         public virtual ICollection<DetallePedido> Detalles { get; set; }
 
         public Factura()
@@ -34,4 +48,3 @@
         }
     }
 }
-

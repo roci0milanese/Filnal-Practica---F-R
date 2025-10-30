@@ -2,22 +2,33 @@
 
 namespace Entidades
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Sucursal
     {
-        public int IdSucursal { get; set; }
-        public string NombreSucursal { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Email { get; set; }
+        [Key]
+        public int IdSucursal { get; set; } // (NOT NULL, PK)
 
-        // Relaciones
-        public int? IdUsuarioAdmin { get; set; }   // puede ser NULL
+        [Required]
+        public string NombreSucursal { get; set; } // (NOT NULL)
+
+        [Required]
+        public string Direccion { get; set; } // (NOT NULL)
+
+        [Required]
+        public string Telefono { get; set; } // (NOT NULL)
+
+        [Required]
+        public string Email { get; set; } // (NOT NULL)
+
+        public int? IdUsuarioAdmin { get; set; } // (NULL)
         public virtual Usuario? UsuarioAdmin { get; set; }
 
-        public int? IdUsuarioCajero { get; set; }  // puede ser NULL
+        public int? IdUsuarioCajero { get; set; } // (NULL)
         public virtual Usuario? UsuarioCajero { get; set; }
 
-        public int IdEmpresa { get; set; }
+        [Required]
+        public int IdEmpresa { get; set; } // (NOT NULL, FK)
         public virtual Empresa Empresa { get; set; }
 
         public virtual ICollection<Stock> Stocks { get; set; }
