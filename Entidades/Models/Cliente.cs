@@ -1,46 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Entidades.Models
 {
-    public class Cliente
-    { 
-
-        [Key]
-        public int IdCliente { get; set; }
-
+    public class Cliente : Usuario
+    {
+        [Required] // no puede ser null
         public string NombreComercial { get; set; }
 
-        public string? TelefonoTienda { get; set; } //(puede estar vacío)
+        public string? TelefonoTienda { get; set; } // Puede estar vacío
 
+        [Required]
         public string EmailFactura { get; set; }
+
+        [Required]
         public string RubroCategoria { get; set; }
+
+        [Required]
         public string DireccionFiscal { get; set; }
 
-        // Relación con los pedidos (un cliente puede tener muchos pedidos)
-        public virtual ICollection<Pedido> Pedidos { get; set; }
+        public Cliente() : base() { }
 
-      
-        public Cliente(string nombreComercial, string? telefonoTienda, string emailFactura, string rubroCategoria, string direccionFiscal)
+        public Cliente(
+            string nombreComercial,
+            string? telefonoTienda,
+            string emailFactura,
+            string rubroCategoria,
+            string direccionFiscal
+        ) : base()
         {
             NombreComercial = nombreComercial;
             TelefonoTienda = telefonoTienda;
             EmailFactura = emailFactura;
             RubroCategoria = rubroCategoria;
             DireccionFiscal = direccionFiscal;
-            Pedidos = new HashSet<Pedido>();
-        }
-
- 
-        public Cliente()
-        {
-            Pedidos = new HashSet<Pedido>(); 
         }
     }
 }
-
-

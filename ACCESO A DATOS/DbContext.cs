@@ -1,6 +1,6 @@
 ﻿namespace ACCESO_A_DATOS
 {
-    public class DbContext
+    public class ACCESO_A_DATOSContext
     {
 
     }

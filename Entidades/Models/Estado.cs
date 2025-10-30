@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entidades.Models
+﻿namespace Entidades.Models
 {
     public class Estado
     {
@@ -21,13 +15,13 @@ namespace Entidades.Models
             Pedidos = new HashSet<Pedido>();
         }
 
-      
+
         public Estado(string nombreEstado, string descripcion = null) : this()
         {
             NombreEstado = nombreEstado;
             Descripcion = descripcion;
         }
 
-      
+
     }
-}  
+}

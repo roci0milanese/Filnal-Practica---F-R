@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Entidades.Models
 {
     public class Categoria
     {
-        [Key]public int IdCategoria { get; set; }
+        [Key] public int IdCategoria { get; set; }
         public string Nombre { get; set; }
         public List<string>? Subcategorias { get; set; }  // Lista de subcategorías (por ejemplo: "Remeras", "Pantalones")
         public int? IdCategoriaPadre { get; set; } // Guarda el id de la categoría padre 

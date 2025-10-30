@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 namespace Entidades.Models
 {
-   
+
     public class Medios_De_Contacto
     {
         public string Medio { get; set; }
@@ -22,11 +17,11 @@ namespace Entidades.Models
     }
 
 
-   
+
     public class Empresa
     {
         // (clave primaria)
-       [Key] public int IdEmpresa { get; set; }
+        [Key] public int IdEmpresa { get; set; }
         public string NombreComercial { get; set; }
 
         // Logo de la empresa (puede ser una ruta o URL de la imagen)
@@ -37,7 +32,7 @@ namespace Entidades.Models
         public string Direccion { get; set; }
         public List<Medios_De_Contacto> MediosContacto { get; set; } = new();
 
-  
+
         public Empresa(string nombreComercial, string logo, string colores, string tipografia, int cuit, string direccion)
         {
             NombreComercial = nombreComercial;

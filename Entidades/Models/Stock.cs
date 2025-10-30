@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entidades.Models
+﻿namespace Entidades.Models
 {
     public class Stock
     {
@@ -27,7 +21,7 @@ namespace Entidades.Models
 
 
         public Stock() { }
-  
+
         public Stock(int cantidadDisponible, DateTime fechaActualizacion, int idProducto, int idSucursal, int idEstado, int? idProveedor = null)
         {
             CantidadDisponible = cantidadDisponible;
@@ -38,7 +32,7 @@ namespace Entidades.Models
             IdProveedor = idProveedor;
         }
 
-   
+
     }
 }
 
